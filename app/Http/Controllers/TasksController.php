@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Task;
+use App\Models\CompletedTasks;
 
 class TasksController extends Controller
 {
     public function index(){
-         
-       
         $tasks = Task::orderBy('id')->get(); //ok without even asc, if need desc , it need
         // $tasks = Task::all();
         // $tasks = Task::where('priority',2)->get();
@@ -46,12 +45,18 @@ class TasksController extends Controller
 
         $new_task->save();
 
-        return redirect('/')->with('msg','New task added successfully');
+        return redirect('/home')->with('msg','New task added successfully');
     }
 
-        public function destroy($id){
+    public function destroy($id){
        $completed_task = Task::findOrFail($id);
+       $completed = new CompletedTasks();
+       $completed->id = $completed_task->id;
+       $completed->name = $completed_task->name;
+        $completed->priority =  $completed_task->priority;
        $completed_task->delete();
+        $completed->save();
+
 
 
         return redirect('/tasks');
