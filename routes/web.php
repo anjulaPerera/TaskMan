@@ -33,3 +33,7 @@ Route::delete('/tasks/{id}','App\Http\Controllers\TasksController@destroy');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
