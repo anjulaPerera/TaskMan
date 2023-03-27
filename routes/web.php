@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('home');
+});
+Route::get('/', function () {
+    return view('welcome');
 });
 Route::get('/tasks','App\Http\Controllers\TasksController@index' );
 
@@ -28,12 +31,18 @@ Route::delete('/tasks/{id}','App\Http\Controllers\TasksController@destroy');
 
 
 
+Route::get('/completed-tasks','App\Http\Controllers\CompletedTasksController@index' );
 
 
 
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 4bc684b62c0a432dcf664dbdea3398a6e7e441c8
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

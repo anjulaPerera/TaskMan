@@ -1,10 +1,12 @@
-@extends('layouts.layouts')
+@extends('layouts.app')
+
+
 
 
 @section('content')
 
     <div class="wrapper task-details">
-        <h1>Specific task - {{$task->name}}</h1>
+        <h1>{{$task->name}}</h1>
         <p class='priority'>Priority - {{$task->priority}}</p>
     </div>
 
